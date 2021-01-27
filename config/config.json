@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "1234",
+    "database": "foodshops",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "admin",
+    "password": "1234",
+    "database": "foodshops",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "1234",
+    "database": "foodshops",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

@@ -8,19 +8,47 @@
                         Store
                     </a>
                 </div>
-            </nav>   
+            </nav>  
 
-            <CardProduct />
+            <CardProduct v-for="(product, index) in products" :key="index"></CardProduct>
+                      
         </div>
     </div>
 </template>
 
 <script>
 import CardProduct from "@/components/store/products/Card.vue";
+import http from "../../http-common";
+
 export default {
     name: "IndexStore",
+    data() {
+        return {
+            products: []
+        }
+    },
     components: {
         CardProduct
+    },
+    methods: {
+        retrieveProducts() {
+            http
+                .get("/products")
+                .then(response => {
+                    this.products = response.data;
+                    console.log(response.data)
+                })
+                .catch(e => {
+                    console.log(e)
+                })
+        },
+        refreshList() {
+            this.retrieveProducts();
+        },
+        
+    },
+    mounted() {
+        this.retrieveProducts()
     }
 }
 </script>
