@@ -11,6 +11,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 require('../route/product.route')(app);
+require('../route/user.route')(app);
 
 // Create a Server
 var server = app.listen(8090, function () {
