@@ -30,6 +30,8 @@ module.exports = {
         .catch(error => res.status(401).send(error))
     },
     logout(_, res) {
-        return res.status(200).send(true);
+        return res.json({
+            message: "Unauthenticated."
+        });
     }
 }
