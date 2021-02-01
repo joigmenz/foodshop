@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import http from "../../http-common";
 export default {
     name: "Login",
     data() {
@@ -49,6 +48,12 @@ export default {
             this.$store.dispatch('retrieveToken', {
                 email: this.email,
                 password: this.password
+            })
+            .then(response => {
+                this.$router.push('/')
+            })
+            .catch(error => {
+                console.log(error)
             })
         }
     }
