@@ -28,5 +28,8 @@ module.exports = {
             { token: service.createToken(user) }
         ))
         .catch(error => res.status(401).send(error))
+    },
+    logout(_, res) {
+        return res.status(200).send(true);
     }
 }

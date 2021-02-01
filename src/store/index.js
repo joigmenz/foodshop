@@ -14,11 +14,31 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    destroyToken(state) {
+      state.token = null
+    },
     retrieveToken(state, token) {
       state.token = token
     }
   },
   actions: {
+    destroyToken(context) {
+      if(context.getters.loggedIn) {
+        return new Promise((resolve, reject) => {
+          http.post('/logout')
+          .then(response => {
+            localStorage.removeItem('access_token')
+            context.commit('destroyToken')
+            resolve(response)
+          })
+          .catch(error => {         
+            localStorage.removeItem('access_token')
+            context.commit('destroyToken')
+            reject(error)
+          })
+        }) 
+      }
+    },
     retrieveToken(context, credentials) {
       return new Promise((resolve, reject) => {
         http.post('/login', {

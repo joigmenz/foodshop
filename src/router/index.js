@@ -33,6 +33,14 @@ const routes = [
     // this generates a separate chunk (signup.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue')
+  },
+  {
+    path: '/logout',
+    name: 'Logout',
+    // route level code-splitting
+    // this generates a separate chunk (logout.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "logout" */ '../components/auth/Logout.vue')
   }
 ]
 

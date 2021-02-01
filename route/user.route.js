@@ -3,5 +3,6 @@ module.exports = function(app) {
 
     app.get('/api/users', user.list);
     app.post('/api/users', user.create);
-    app.post('/api/login', user.login)
+    app.post('/api/login', user.login);
+    app.post('/api/logout', user.logout);
 }
