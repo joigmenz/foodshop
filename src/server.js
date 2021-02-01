@@ -5,10 +5,11 @@ app.use(bodyParser.json())
  
 const cors = require('cors')
 const corsOptions = {
+  methods: 'GET,POST,PATCH,DELETE,OPTIONS',
   origin: 'http://localhost:8080',
   optionsSuccessStatus: 200
 }
-app.use(cors(corsOptions))
+app.use(cors())
 
 require('../route/product.route')(app);
 require('../route/user.route')(app);
