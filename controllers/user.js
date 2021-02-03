@@ -24,10 +24,19 @@ module.exports = {
                 password: req.body.password
             }
         })
-        .then(user => res.json(
+        .then(user => {
+            if(!user) {
+                res.json({
+                    status: "401",
+                    message: "Either username or password is incorrect."
+                }) 
+                return;
+            }
+            console.log(user)
+            res.json(
             { token: service.createToken(user) }
-        ))
-        .catch(error => res.status(401).send(error))
+            )})
+        .catch(error => res.send(error))
     },
     logout(_, res) {
         return res.json({

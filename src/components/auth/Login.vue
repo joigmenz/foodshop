@@ -18,6 +18,8 @@
                     name="password"
                     placeholder="Password"
                     v-model="password" />
+
+                <p class="text-red-500 mb-4" v-bind:show="error">{{ error }}</p>
                 <button
                     type="submit"
                     class="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-700 focus:outline-none my-1"
@@ -40,7 +42,8 @@ export default {
     data() {
         return {
             email: '',
-            password: ''
+            password: '',
+            error: null
         }
     },
     methods: {
@@ -49,10 +52,11 @@ export default {
                 email: this.email,
                 password: this.password
             })
-            .then(response => {
+            .then(response => {                
                 this.$router.push('/')
             })
             .catch(error => {
+                this.error = error.message
                 console.log(error)
             })
         }

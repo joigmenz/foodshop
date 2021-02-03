@@ -48,6 +48,10 @@ export default new Vuex.Store({
           password: credentials.password
         })
         .then(response => {
+          if(response.data.status == "401") {
+            reject(response.data)
+            return;
+          }
           const token = response.data.token
           localStorage.setItem('access_token', token)
           context.commit('retrieveToken', token)
