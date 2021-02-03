@@ -51,7 +51,7 @@ export default new Vuex.Store({
           if(response.data.status == "401") {
             reject(response.data)
             return;
-          }
+          }          
           const token = response.data.token
           localStorage.setItem('access_token', token)
           context.commit('retrieveToken', token)

@@ -13,7 +13,7 @@
                     v-model="name"
                     type="text"
                     class="block border border-grey-light w-full p-3 rounded mb-1"
-                    name="fullname"
+                    name="name"
                     placeholder="Full Name" />
                     <p class="text-left text-red-400 mb-4" v-bind:show="errors.name">{{ errors.name }}</p>
                 <input 
@@ -85,7 +85,7 @@ export default {
         checkForm: function (e) {
 
             this.errors = {};
-
+            
             if (!this.name) {
                 this.errors['name'] = 'The name is required'
             }
@@ -101,9 +101,10 @@ export default {
             if (this.password != this.confirm_password) {
                 this.errors['confirm_password'] = 'The password does not match'
             }
-
+            
             if (!this.errors.length) {
                 const user = {
+                    name: this.name,
                     email: this.email,
                     password: this.password
                 }
@@ -111,11 +112,17 @@ export default {
                 http
                 .post("/users", user)
                 .then(response => {
-                    this.products = response.data;
-                    console.log(response.data)
+                    if(response.data.errors) {
+                        this.errors = {}
+                        response.data.errors.forEach(data => {
+                            this.errors[data.path] = data.message
+                        });
+                        return
+                    }
+                    this.$router.push('/sign-in')
                 })
-                .catch(e => {
-                    console.log(e)
+                .catch(error => {
+                    console.log(error)
                 })
             }
             e.preventDefault();

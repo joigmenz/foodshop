@@ -4,12 +4,13 @@ const service = require('../services/services')
 module.exports = {
     create(req, res) {
         User.create({
+            name: req.body.name,
             email: req.body.email,
             password: req.body.password
         }).then(user => {
             res.send(user);
         }).catch(error => {
-            res.status(500).send(error);
+            res.status(200).send(error);
         });
     },
     list(_, res) {
@@ -32,9 +33,11 @@ module.exports = {
                 }) 
                 return;
             }
-            console.log(user)
-            res.json(
-            { token: service.createToken(user) }
+            res.json({ 
+                status: "200",
+                token: service.createToken(user),
+                name: user.name
+            }
             )})
         .catch(error => res.send(error))
     },

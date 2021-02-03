@@ -14,19 +14,47 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
+    name: {
+      type: DataTypes.STRING,    
+      allowNull: false,  
+      validate: {
+        notNull: {
+          msg: 'The name is required'
+        },
+        len: {
+          args: [4, 16],
+          msg: "String length is not in this range."
+        },
+      }
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: {
+        msg: 'This email is already taken.'
+      },
       validate: {
         notNull: {
           msg: 'The email is required'
         },
         isEmail: {
-          msg: 'It is not a valid email'
+          msg: 'The email not is valid'
         }
       }
     },
-    password: DataTypes.STRING,
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'The password is required'
+        },
+        len: {
+          args: [4, 32],
+          msg: "String length is not in this range."
+        },
+      }
+    },
   }, {
     sequelize,
     modelName: 'user',
