@@ -10,12 +10,15 @@
                 </div>
             </nav>  
 
-            <CardProduct 
-                v-for="(product, index) in products" 
-                :key="index" 
-                v-bind:name="product.name"
-                v-bind:price="product.price"
-            ></CardProduct>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <CardProduct 
+                    v-for="(product, index) in products" 
+                    :key="index"
+                    v-bind:picture="product.picture"
+                    v-bind:name="product.name"
+                    v-bind:price="product.price"
+                ></CardProduct>
+            </div>
                       
         </div>
     </div>

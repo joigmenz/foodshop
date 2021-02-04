@@ -11,8 +11,26 @@
                 <img class="ml-1 opacity-75" src="assets/icons/arrow-down.svg" width="12px" height="12px" />                        
             </button>       
             
-            <div class="absolute w-56 bg-gray-100 top-8 right-0 shadow" v-show="isOpen">
-                OPEN
+            <div class="absolute w-72 bg-gray-200 top-8 right-0 shadow" v-show="isOpen">
+                <div class="flex flex-col p-2">
+                    <div class="relative flex flex-col gap-1 bg-white py-2">
+                        <div class="flex">
+                            <img class="" src="/img/ekam-essencia.jpg" width="48px">
+                            <div class="flex flex-col justify-between m-1">
+                                <div class="flex flex-col">
+                                    <a href="#" class="text-sm">Ekam Essència 2018</a>  
+                                    <p class="text-left text-xs font-bold">Price: 44.99€</p>
+                                </div>                                
+                                <span class="text-left text-xs">Cuantity: 1</span>
+                            </div>
+                        </div>
+                        <button class="absolute top-2 right-3 hover:text-gray-400">X</button>
+                    </div>
+                    <div class="flex justify-between px-2 pt-2">
+                        <p>Total:</p>
+                        <button class="bg-blue-500 p-2 rounded-sm text-sm text-white font-semibold">VIEW CART</button>
+                    </div>
+                </div>
             </div>
         </a>
     </div>

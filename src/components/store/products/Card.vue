@@ -1,11 +1,12 @@
 <template>
-    <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
-        <a href="#">
-            <img class="hover:grow hover:shadow-lg" src="https://images.unsplash.com/photo-1555982105-d25af4182e4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&h=400&q=80">
-            <div class="pt-3 flex items-center justify-between">
-                <p class="">{{ name }}</p>                
-            </div>
-            <p class="pt-1 text-gray-900">{{ price }} €</p>
+    <div class="flex p-4">
+        <a href="#" class="flex flex-col w-full">
+            <img class="hover:grow hover:shadow-lg self-center flex-grow md:w-3/6 " :src="picture">
+            <p class="text-center">{{ name }}</p>  
+            <div class="pt-3 flex justify-between">
+                <p class="pt-1 font-bold text-gray-900">{{ price }} €</p>              
+                <button class="bg-red-500 px-2 rounded-sm text-xs text-white font-semibold">ADD CARD</button>
+            </div>            
         </a>
     </div>
 </template>
@@ -14,7 +15,7 @@
 export default {
     name: "Card",
     props: [
-        'name', 'price'
+        'picture', 'name', 'price'
     ]
 }
 </script>
