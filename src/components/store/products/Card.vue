@@ -5,7 +5,11 @@
             <p class="text-center">{{ name }}</p>  
             <div class="pt-3 flex justify-between">
                 <p class="pt-1 font-bold text-gray-900">{{ price }} €</p>              
-                <button class="bg-red-500 px-2 rounded-sm text-xs text-white font-semibold">ADD CARD</button>
+                <button 
+                    @click="push"
+                    class="bg-red-500 px-2 rounded-sm text-xs text-white font-semibold">
+                    ADD CARD
+                </button>
             </div>            
         </a>
     </div>
@@ -15,7 +19,19 @@
 export default {
     name: "Card",
     props: [
-        'picture', 'name', 'price'
-    ]
+        'id', 'picture', 'name', 'price'
+    ],
+    methods: {
+        push() {
+            const { id, picture, name, price } = this
+            const product = {
+                id,
+                picture,
+                name,
+                price
+            }
+            this.$store.dispatch('addProductCart', product)
+        }
+    }
 }
 </script>

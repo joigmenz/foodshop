@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "admin",
+    "username": "root",
     "password": "1234",
     "database": "foodshops",
     "host": "localhost",
