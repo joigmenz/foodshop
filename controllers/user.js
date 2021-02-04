@@ -10,7 +10,7 @@ module.exports = {
         }).then(user => {
             res.send(user);
         }).catch(error => {
-            res.status(200).send(error);
+            res.send(error);
         });
     },
     list(_, res) {
@@ -22,14 +22,20 @@ module.exports = {
         return User.findOne({
             where: {
                 email: req.body.email,
-                password: req.body.password
             }
         })
-        .then(user => {
+        .then(user => {            
             if(!user) {
                 res.json({
                     status: "401",
-                    message: "Either username or password is incorrect."
+                    message: "The username you entered doesn't belong to an account."
+                }) 
+                return;
+            }            
+            if(!user.authenticate(req.body.password)){
+                res.json({
+                    status: "401",
+                    message: "Sorry, your password was incorrect."
                 }) 
                 return;
             }

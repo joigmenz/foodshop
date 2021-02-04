@@ -23,13 +23,13 @@
                 <button
                     type="submit"
                     class="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-700 focus:outline-none my-1"
-                    >Sign In</button>       
+                    >Log In</button>       
             </div>
 
             <div class="text-grey-dark mt-6">
-                Already don't have an account? 
-                <router-link class="no-underline border-b border-blue text-blue" to="/sign-up">
-                    Sign Up
+                Don't have an account?
+                <router-link class="no-underline text-blue font-bold" to="/sign-up">
+                    Sign up
                 </router-link>
             </div>
         </form>

@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const bcrypt = require('bcrypt');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -49,15 +50,28 @@ module.exports = (sequelize, DataTypes) => {
         notNull: {
           msg: 'The password is required'
         },
-        len: {
-          args: [4, 32],
-          msg: "String length is not in this range."
+        notEmpty: {
+          args: [true],
+          msg: 'The password is required'
         },
-      }
+        len: {
+          args: [6],
+          msg: "Minimum password length is 6 characters"
+        },
+      },      
     },
   }, {
+    hooks: {
+      beforeCreate: async (user) => 
+        (user.password = await bcrypt.hash(user.password, 10))
+    },
     sequelize,
-    modelName: 'user',
+    modelName: 'user'
   });
+
+  User.prototype.authenticate = function(password) {
+    return bcrypt.compareSync(password, this.password);
+  }
+
   return User;
 };
