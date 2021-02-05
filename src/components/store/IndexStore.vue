@@ -10,7 +10,7 @@
                 </div>
             </nav>  
 
-            <div class="grid sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            <div class="grid sm:grid-cols-1 sm:px-10 md:grid-cols-3 md:px-5 lg:grid-cols-5 xl:grid-cols-6 gap-4">
                 <CardProduct 
                     v-for="(product, index) in products" 
                     :key="index"

@@ -1,23 +1,19 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import http from '../http-common'
-import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     token: localStorage.getItem('access_token') || null, 
-    cart: JSON.parse(localStorage.getItem('cart')) || {} 
+    cart: JSON.parse(localStorage.getItem('cart')) || {},
+    total: 0
   },
-  plugins: [createPersistedState()],
   getters: {
-    loggedIn(state) {
-      return state.token
-    },
-    hasProducts(state) {
-      return Object.keys(state.cart).length ? true : false
-    }
+    loggedIn: (state) => state.token,
+    hasProducts: (state) => Object.keys(state.cart).length ? true : false,    
+    qtyProducts: (state) => Object.values(state.cart).reduce((qty, product) => qty + product.cant, 0)
   },
   mutations: {
     destroyToken(state) {
@@ -28,7 +24,11 @@ export default new Vuex.Store({
     },
     updateCart(state, cart) {
       state.cart = cart
-    }
+    },
+    total(state, cart) {
+      var amount = Object.values(cart).reduce((amount, product) => amount + (product.price * product.cant ), 0)
+      state.total = amount.toFixed(2)
+    },
   },
   actions: {
     destroyToken(context) {
@@ -80,6 +80,7 @@ export default new Vuex.Store({
       delete cart[product]
       localStorage.setItem('cart', JSON.stringify(cart))
       context.commit('updateCart', cart)
+      context.commit('total', cart)  
     },
     addProductCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {} 
@@ -90,7 +91,8 @@ export default new Vuex.Store({
       }
       cart[product.id] = product  
       localStorage.setItem('cart', JSON.stringify(cart))
-      context.commit('updateCart', cart)
+      context.commit('updateCart', cart)        
+      context.commit('total', cart)   
     }
   },
   modules: {

@@ -1,13 +1,16 @@
 <template>
-    <div class="relative flex flex-col gap-1 bg-white py-2">
+    <div class="bg-withe hover:shadow relative flex flex-col rounded-md gap-1 bg-white py-2">
         <div class="flex">
-            <img class="ml-2" :src="picture" style="height: 76px">
-            <div class="flex flex-col justify-between m-1">
+            <img class="ml-2" :src="picture" style="height: 56px">
+            <div class="flex flex-col justify-between ml-2">
                 <div class="flex flex-col mr-5">
-                    <p class="text-left text-sm w-48 truncate">{{ name }}</p>  
-                    <p class="text-left text-xs font-bold">Price: {{ price }}€</p>
-                </div>                                
-                <span class="text-left text-xs">Cuantity:  {{ cant }}</span>
+                    <h1 class="text-left text-sm w-48 truncate">{{ name }}</h1> 
+                    <span class="text-left text-xs font-light text-gray-400 ">Wine White</span> 
+                </div>   
+                <div class="flex justify-between">
+                    <span class="text-left text-xs">({{ cant }}) x {{ price.toFixed(2) }} €</span>
+                    <span class="text-right text-sm">{{ (cant * price).toFixed(2) }} €</span>
+                </div>  
             </div>
         </div>
         <div 
