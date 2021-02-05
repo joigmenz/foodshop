@@ -8,14 +8,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     token: localStorage.getItem('access_token') || null, 
-    cart: JSON.parse(localStorage.getItem('cart')) || {},
-    priceTotalCart: null
+    cart: JSON.parse(localStorage.getItem('cart')) || {} 
   },
   plugins: [createPersistedState()],
   getters: {
     loggedIn(state) {
       return state.token
     },
+    hasProducts(state) {
+      return Object.keys(state.cart).length ? true : false
+    }
   },
   mutations: {
     destroyToken(state) {
@@ -81,8 +83,12 @@ export default new Vuex.Store({
     },
     addProductCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {} 
-      cart[product.id] = product
-      cart[product.id].cant = cart[product.id].cant ? parseInt(cart[product.id].cant++) : "1"
+      if(!cart[product.id]){
+        product.cant = 1
+      }else{
+        product.cant = cart[product.id].cant + 1
+      }
+      cart[product.id] = product  
       localStorage.setItem('cart', JSON.stringify(cart))
       context.commit('updateCart', cart)
     }

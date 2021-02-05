@@ -7,7 +7,7 @@
                     <p class="text-left text-sm w-48 truncate">{{ name }}</p>  
                     <p class="text-left text-xs font-bold">Price: {{ price }}€</p>
                 </div>                                
-                <span class="text-left text-xs">Cuantity: 1</span>
+                <span class="text-left text-xs">Cuantity:  {{ cant }}</span>
             </div>
         </div>
         <div 
@@ -22,7 +22,7 @@
 export default {
     name: "Product",
     props: [
-        'id', 'picture', 'name', 'price'
+        'id', 'picture', 'name', 'price', 'cant'
     ],
     methods: {       
         remove() {
