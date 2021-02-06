@@ -13,7 +13,9 @@ export default new Vuex.Store({
   getters: {
     loggedIn: (state) => state.token,
     hasProducts: (state) => Object.keys(state.cart).length ? true : false,    
-    qtyProducts: (state) => Object.values(state.cart).reduce((qty, product) => qty + product.cant, 0)
+    qtyProducts: (state) => Object.values(state.cart).reduce((qty, product) => qty + product.cant, 0),
+    cart: (state) => state.cart,
+    total: (state) => state.total
   },
   mutations: {
     destroyToken(state) {
@@ -72,9 +74,6 @@ export default new Vuex.Store({
         })
       })      
     },
-    priceTotalCart(context , product){
-      context.commit('push', product)
-    },
     removeProductCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {}
       delete cart[product]
@@ -84,6 +83,7 @@ export default new Vuex.Store({
     },
     addProductCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {} 
+      console.log(context.getters.cart)
       if(!cart[product.id]){
         product.cant = 1
       }else{
