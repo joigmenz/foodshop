@@ -25,6 +25,8 @@
                 </router-link>
                 <div class="flex items-center content-end gap-2 uppercase my-2">
                     
+                    <Cart/>
+                    
                     <router-link 
                         v-if="!loggedIn"
                         class="flex no-underline hover:text-black" to="/sign-in">
@@ -44,8 +46,6 @@
                         </svg>
                         Logout
                     </router-link>
-
-                    <Cart/>
                 </div>
             </div>            
         </div>        

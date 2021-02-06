@@ -8,14 +8,16 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('access_token') || null, 
     cart: JSON.parse(localStorage.getItem('cart')) || {},
-    total: 0
   },
   getters: {
     loggedIn: (state) => state.token,
     hasProducts: (state) => Object.keys(state.cart).length ? true : false,    
     qtyProducts: (state) => Object.values(state.cart).reduce((qty, product) => qty + product.cant, 0),
     cart: (state) => state.cart,
-    total: (state) => state.total
+    total: (state) => {
+      var amount = Object.values(state.cart).reduce((amount, product) => amount + (product.price * product.cant ), 0)
+      return amount
+    }
   },
   mutations: {
     destroyToken(state) {
@@ -83,13 +85,19 @@ export default new Vuex.Store({
     },
     addProductCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {} 
-      console.log(context.getters.cart)
       if(!cart[product.id]){
         product.cant = 1
       }else{
         product.cant = cart[product.id].cant + 1
       }
       cart[product.id] = product  
+      localStorage.setItem('cart', JSON.stringify(cart))
+      context.commit('updateCart', cart)        
+      context.commit('total', cart)   
+    },
+    qtyChangeProduct(context, product) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {}
+      cart[product.id].cant = Number.parseInt(product.qty)
       localStorage.setItem('cart', JSON.stringify(cart))
       context.commit('updateCart', cart)        
       context.commit('total', cart)   
