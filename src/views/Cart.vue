@@ -6,7 +6,7 @@
             </a>
         </div>
         <div class="max-w-screen-lg grid md:grid-cols-5">  
-            <div class="flex flex-col md:col-span-3 border p-2 gap-2">
+            <div class="flex flex-col md:col-span-3 p-2 border-t gap-2">
                 <ProductShoppingCart
                     v-for="(product, index) in cart"
                     :key="index"
@@ -16,9 +16,13 @@
                     v-bind:price="product.price"
                     v-bind:qty="product.cant"
                     >
-                </ProductShoppingCart>
-
-                                                 
+                </ProductShoppingCart> 
+                <div class="flex flex-col items-center text-gray-400 p-4" v-show="!hasProducts">
+                    Your cart is empty    
+                    <a href="/" class="bg-red-600 hover:bg-red-700 rounded-sm text-lg text-white font-bold py-2 px-4 mt-4 w-1/2">
+                        Continue Shopping
+                    </a>
+                </div>     
             </div>
             <Summary />
         </div>
@@ -35,7 +39,7 @@ export default {
   name: 'Cart',
   computed: {
       ...mapGetters([
-          'qtyProducts', 'cart'
+          'qtyProducts', 'cart', 'hasProducts'
       ]),
   },
   components: {

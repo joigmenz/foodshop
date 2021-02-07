@@ -97,7 +97,7 @@ export default new Vuex.Store({
     },
     qtyChangeProduct(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {}
-      cart[product.id].cant = Number.parseInt(product.qty)
+      cart[product.id].cant = (Number.parseInt(product.qty) > 1) ? Number.parseInt(product.qty) : 1
       localStorage.setItem('cart', JSON.stringify(cart))
       context.commit('updateCart', cart)        
       context.commit('total', cart)   

@@ -41,13 +41,13 @@ export default {
   name: 'Summary',
   computed: {
       ...mapGetters([
-          'qtyProducts', 'total'
+          'qtyProducts', 'total', 'hasProducts'
       ]),
       haShippingFree() {
           return (this.total > this.shippingPrice) ? true : false
       },
       shippingTax() {
-          return (this.total > this.shippingPrice) ? 0 : this.shippingPrice
+          return (this.total > this.shippingPrice || !this.hasProducts) ? 0 : this.shippingPrice
       }
   },
   data() {
