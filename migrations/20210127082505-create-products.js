@@ -20,6 +20,10 @@ module.exports = {
         type: Sequelize.FLOAT,
         allowNull: false
       },
+      category: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

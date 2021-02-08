@@ -8,13 +8,13 @@
                     wineshop.com
                 </a>
                 <nav class="flex items-center text-lg gap-2 uppercase my-2 font-serif">
-                    <a class="inline-block no-underline hover:text-black hover:underline" to="/">Red Wine</a> 
+                    <router-link class="inline-block no-underline hover:text-black hover:underline" to="/products/categories/red-wine">Red Wine</router-link> 
                     <span class="text-gray-500">|</span>
-                    <a class="inline-block no-underline hover:text-black hover:underline" to="/">White Wine</a> 
+                    <router-link class="inline-block no-underline hover:text-black hover:underline" to="/products/categories/white-wine">White Wine</router-link>
                     <span class="text-gray-500">|</span>
-                    <a class="inline-block no-underline hover:text-black hover:underline" to="/">Rosé Wine</a> 
+                    <router-link class="inline-block no-underline hover:text-black hover:underline" to="/products/categories/rose-wine">Rosé Wine</router-link>
                     <span class="text-gray-500">|</span>
-                    <a class="inline-block no-underline hover:text-black hover:underline" to="/">Champagne</a>
+                    <router-link class="inline-block no-underline hover:text-black hover:underline" to="/products/categories/champagne">Champagne</router-link>
                 </nav>
             </div>
 
