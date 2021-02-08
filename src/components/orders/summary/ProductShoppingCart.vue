@@ -12,11 +12,11 @@
                 <div class="flex items-end custom-number-input h-10 w-38">
                     <div class="flex flex-row h-6 rounded-lg relative bg-transparent mt-1 w-20">
                         <button @click="qtyDecrement()" class=" bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-l cursor-pointer outline-none">
-                        <span class="m-auto text-sm">−</span>
+                            <span class="m-auto text-sm">−</span>
                         </button>
                         <input v-model="qty" type="number" class="outline-none focus:outline-none text-center w-full bg-gray-200 font-semibold text-sm hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none" name="qty"/>
                         <button @click="qtyIncrement()" class="bg-gray-200 text-gray-600 hover:text-gray-700 hover:bg-gray-300 h-full w-20 rounded-r cursor-pointer">
-                        <span class="m-auto text-sm">+</span>
+                            <span class="m-auto text-sm">+</span>
                         </button>                            
                     </div>
                     <span class="flex text-left text-base ml-2">x {{ (price).toFixed(2) }} €</span>
@@ -29,6 +29,7 @@
 </template>
 
 <style scoped>
+    /* TODO: Revisar, el diseño para la cantidad de productos no se visualiza bien en FireFox */
     input[type='number']::-webkit-inner-spin-button,
     input[type='number']::-webkit-outer-spin-button {
         -webkit-appearance: none;
