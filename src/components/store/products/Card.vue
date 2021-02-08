@@ -6,7 +6,7 @@
             </div>
             <div class="flex flex-col">
                 <h1 class="text-center">{{ name }}</h1>  
-                <p class="text-sm font-bold">Wine White</p>
+                <p class="text-sm font-bold uppercase">{{ category.replace('-', ' ') }}</p>
                 <div class="pt-3 flex justify-between">
                     <p class="pt-1 font-bold text-gray-900">{{ price.toFixed(2) }} €</p>              
                     <button 
@@ -24,7 +24,7 @@
 export default {
     name: "Card",
     props: [
-        'id', 'picture', 'name', 'price'
+        'id', 'picture', 'name', 'price', 'category'
     ],
     methods: {
         push() {

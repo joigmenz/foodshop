@@ -18,6 +18,7 @@
                     v-bind:picture="product.picture"
                     v-bind:name="product.name"
                     v-bind:price="product.price"
+                    v-bind:category="product.category"
                 ></CardProduct>
             </div>
                       

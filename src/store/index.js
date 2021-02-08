@@ -8,8 +8,10 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem('access_token') || null, 
     cart: JSON.parse(localStorage.getItem('cart')) || {},
+    products: []
   },
   getters: {
+    products: (state) => state.products,
     loggedIn: (state) => state.token,
     hasProducts: (state) => Object.keys(state.cart).length ? true : false,    
     qtyProducts: (state) => Object.values(state.cart).reduce((qty, product) => qty + product.cant, 0),
@@ -33,6 +35,7 @@ export default new Vuex.Store({
       var amount = Object.values(cart).reduce((amount, product) => amount + (product.price * product.cant ), 0)
       state.total = amount.toFixed(2)
     },
+    setProducts: (state, data) => state.products = data
   },
   actions: {
     destroyToken(context) {
@@ -75,6 +78,21 @@ export default new Vuex.Store({
           reject(error)
         })
       })      
+    },
+    fetchProductData(context, url) {
+      return new Promise((resolve, reject) => {
+        http.get(url)
+          .then(response => {
+            const data = response.data
+            context.commit('setProducts', data)
+            resolve(response)
+          })
+          .catch(error => {
+            context.commit('setProducts', [])
+            reject(error)
+          })
+      })
+      console.log(url)
     },
     removeProductCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {}
