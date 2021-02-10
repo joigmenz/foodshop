@@ -126,6 +126,18 @@ export default new Vuex.Store({
       localStorage.setItem('cart', JSON.stringify(cart))
       context.commit('updateCart', cart)        
       context.commit('total', cart)   
+    },
+    addToCart(context, product) {
+      const cart = JSON.parse(localStorage.getItem('cart')) || {} 
+      if(!cart[product.id]){
+        product.cant = 1
+      }else{
+        product.cant = cart[product.id].cant + 1
+      }
+      cart[product.id] = product  
+      localStorage.setItem('cart', JSON.stringify(cart))
+      context.commit('updateCart', cart)        
+      context.commit('total', cart)   
     }
   },
   modules: {
