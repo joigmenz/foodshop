@@ -1,11 +1,13 @@
 <template>
   <div class="flex shadow border p-4">
-    <router-link :to="{ path: '/product/' + id }" class="flex flex-col justify-between w-full">
+    <div class="flex flex-col justify-between w-full">
       <div class="flex flex-shrink-0">
         <img class="object-contain h-48 w-full" :src="picture" />
       </div>
       <div class="flex flex-col">
-        <h1 class="text-center">{{ name }}</h1>
+        <router-link :to="{ path: '/product/' + id }"  class="text-center">
+          {{ name }}
+          </router-link>
         <p class="text-sm font-bold uppercase">
           {{ category.replace("-", " ") }}
         </p>
@@ -21,7 +23,7 @@
           </button>
         </div>
       </div>
-    </router-link>
+    </div>
   </div>
 </template>
 

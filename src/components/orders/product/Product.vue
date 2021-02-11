@@ -3,8 +3,8 @@
         <div class="flex">
             <img class="ml-2" :src="picture" style="height: 56px">
             <div class="flex flex-col justify-between ml-2">
-                <div class="flex flex-col mr-5">
-                    <h1 class="text-left text-sm w-48 truncate">{{ name }}</h1> 
+                <div class="flex flex-col mr-5">                    
+                    <router-link :to="{ path: '/product/' + id }"  class="text-left text-sm w-48 truncate">{{ name }}</router-link> 
                     <span class="text-left text-xs font-light text-gray-400 ">Wine White</span> 
                 </div>   
                 <div class="flex justify-between">
