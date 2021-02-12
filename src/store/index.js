@@ -92,7 +92,6 @@ export default new Vuex.Store({
             reject(error)
           })
       })
-      console.log(url)
     },
     removeProductCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {}

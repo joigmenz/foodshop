@@ -55,34 +55,6 @@ export default {
             const url = `/products/categories/${ this.$route.params.slug }`
             this.$store.dispatch('fetchProductData', url)               
         }
-    },    
-    /*
-    data() {
-        return {
-            products: []
-        }
-    },
-    components: {
-        CardProduct
-    },
-    methods: {
-        retrieveProducts() {
-            http
-                .get(`/products/categories/${ this.$route.params.slug }`)
-                .then(response => {
-                    this.products = response.data;
-                })
-                .catch(e => {
-                    console.log(e)
-                })
-        },
-        refreshList() {
-            this.retrieveProducts();
-        },
-        
-    },
-    mounted() {
-        this.retrieveProducts()
-    }*/
+    }
 }
 </script>
