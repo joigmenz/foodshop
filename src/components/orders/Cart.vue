@@ -19,8 +19,10 @@
                     v-bind:id="product.id"
                     v-bind:picture="product.picture"
                     v-bind:name="product.name"
+                    v-bind:slug="product.slug"
+                    v-bind:category="product.category"
                     v-bind:price="product.price"
-                    v-bind:cant="product.cant"
+                    v-bind:qty="product.qty"
                 />
                 <div class="flex justify-between px-2 pt-2">
                     <p>Total: {{ total.toFixed(2) }}€</p>

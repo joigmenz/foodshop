@@ -1,5 +1,7 @@
 const User = require('../models').user;
-const service = require('../services/services')
+const service = require('../services/services');
+const Order = require('../models').order;
+const OrderProduct = require('../models').OrderProduct;
 
 module.exports = {
     create(req, res) {
@@ -24,7 +26,8 @@ module.exports = {
                 email: req.body.email,
             }
         })
-        .then(user => {            
+        .then(user => {   
+            console.log(user)         
             if(!user) {
                 res.json({
                     status: "401",
@@ -47,9 +50,19 @@ module.exports = {
             )})
         .catch(error => res.send(error))
     },
-    logout(_, res) {
-        return res.json({
-            message: "Unauthenticated."
+    checkout: async (req, res) => {        
+        const order = await Order.create({ userId: req.userId })       
+        Object.values(req.body.products).forEach( async product => {
+            await OrderProduct.create({
+                orderId: order.id,
+                productId: product.id,
+                qty: product.qty
+            })
+            console.log(product.id)
+        });
+        //console.log(products)
+        return res.send({
+            message: "Success."
         });
     }
 }

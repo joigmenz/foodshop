@@ -27,7 +27,9 @@
                         <span>{{ ((total * 1.21) + shippingTax).toFixed(2) }} €</span>
                     </div>
                 </div>
-                <button class="bg-red-500 hover:bg-red-600 rounded-sm text-lg text-white font-bold p-2 mt-4">
+                <button 
+                    @click="checkout"
+                    class="bg-red-500 hover:bg-red-600 rounded-sm text-lg text-white font-bold p-2 mt-4">
                     CHECK OUT
                 </button>
             </div>
@@ -39,6 +41,11 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Summary',
+  methods: {
+      checkout() {
+          this.$store.dispatch('CHECKOUT');
+      }
+  },
   computed: {
       ...mapGetters([
           'qtyProducts', 'total', 'hasProducts'
@@ -55,7 +62,5 @@ export default {
           shippingPrice: 23.00
       }
   },
-  components: {
-  }
 }
 </script>

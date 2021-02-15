@@ -13,8 +13,10 @@
                     v-bind:id="product.id"
                     v-bind:picture="product.picture"
                     v-bind:name="product.name"
+                    v-bind:slug="product.slug"
+                    v-bind:category="product.category"
                     v-bind:price="product.price"
-                    v-bind:qty="product.cant"
+                    v-bind:qty="product.qty"
                     >
                 </ProductShoppingCart> 
                 <div class="flex flex-col items-center text-gray-400 p-4" v-show="!hasProducts">

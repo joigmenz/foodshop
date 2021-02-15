@@ -8,6 +8,8 @@
                     wineshop.com
                 </a>
                 <nav class="flex items-center text-lg gap-2 uppercase my-2 font-serif">
+                    <router-link class="inline-block no-underline hover:text-black hover:underline" to="/">Store</router-link> 
+                    <span class="text-gray-500">|</span>
                     <router-link class="inline-block no-underline hover:text-black hover:underline" to="/products/categories/red-wine">Red Wine</router-link> 
                     <span class="text-gray-500">|</span>
                     <router-link class="inline-block no-underline hover:text-black hover:underline" to="/products/categories/white-wine">White Wine</router-link>
@@ -28,7 +30,7 @@
                     <Cart/>
                     
                     <router-link 
-                        v-if="!loggedIn"
+                        v-if="!isAuthenticated"
                         class="flex no-underline hover:text-black" to="/sign-in">
                         <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <circle fill="none" cx="12" cy="7" r="3" />
@@ -38,7 +40,7 @@
                     </router-link> 
 
                     <router-link 
-                        v-if="loggedIn"
+                        v-if="isAuthenticated"
                         class="flex no-underline hover:text-black" to="/logout">
                         <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                             <circle fill="none" cx="12" cy="7" r="3" />
@@ -60,8 +62,8 @@ export default {
         Cart
     },
     computed: {
-        loggedIn() {
-            return this.$store.getters.loggedIn
+        isAuthenticated() {
+            return this.$store.getters.isAuthenticated
         }
     }
 }

@@ -18,6 +18,7 @@
                     v-bind:id="product.id"
                     v-bind:picture="product.picture"
                     v-bind:name="product.name"
+                    v-bind:slug="product.slug"
                     v-bind:category="product.category"
                     v-bind:price="product.price"
                 ></CardProduct>
@@ -30,7 +31,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import CardProduct from "@/components/store/products/Card.vue";
-import http from "../../http-common";
 
 export default {
     name: "CategoryProducts",

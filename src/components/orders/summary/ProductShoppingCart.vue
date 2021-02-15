@@ -6,7 +6,7 @@
         <div class="flex flex-col flex-grow justify-between ml-2">
             <div class="flex flex-col mr-5">
                 <h1 class="text-left text-lg w-48 truncate">{{ name }}</h1>
-                <span class="text-left text-sm font-light text-gray-400 ">White Wine</span> 
+                <span class="text-left text-sm font-light text-gray-400 ">{{ category }}</span> 
             </div>
             <div class="flex items-end justify-between">
                 <div class="flex items-end custom-number-input h-10 w-38">
@@ -49,7 +49,7 @@
 export default {
     name: 'ProductShoppingCart',
     props: [
-        'id', 'picture', 'name', 'price', 'qty'
+        'id', 'picture', 'name', 'slug', 'category', 'price', 'qty'
     ],
     methods: {
         /* TODO: Utilizar el método qtyChange en vez de (qtyDecrement / qtyIncrement) 

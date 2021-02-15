@@ -5,7 +5,7 @@
         <img class="object-contain h-48 w-full" :src="picture" />
       </div>
       <div class="flex flex-col">
-        <router-link :to="{ path: '/product/' + id }"  class="text-center">
+        <router-link :to="{ path: '/products/' + slug }"  class="text-center">
           {{ name }}
           </router-link>
         <p class="text-sm font-bold uppercase">
@@ -30,14 +30,16 @@
 <script>
 export default {
   name: "Card",
-  props: ["id", "picture", "name", "price", "category"],
+  props: ["id", "picture", "name", "slug", "price", "category"],
   methods: {
     push() {
-      const { id, picture, name, price } = this;
+      const { id, picture, name, slug, category, price } = this;
       const product = {
         id,
         picture,
         name,
+        slug,
+        category,
         price,
       };
       this.$store.dispatch("addProductCart", product);

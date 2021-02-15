@@ -47,18 +47,14 @@ export default {
         }
     },
     methods: {
-        login() {
-            this.$store.dispatch('retrieveToken', {
-                email: this.email,
-                password: this.password
-            })
-            .then(response => {                
+        login: function() {
+            const { email, password } = this
+            this.$store.dispatch('AUTH_REQUEST', { email, password }).then(() => {
                 this.$router.push('/')
-            })
-            .catch(error => {
+            }).catch(error => {
                 this.error = error.message
                 console.log(error)
-            })
+            });
         }
     }
 }

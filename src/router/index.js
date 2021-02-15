@@ -69,7 +69,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue')
   },
   {
-    path: '/product/:id',
+    path: '/products/:slug',
     name: 'product',
     // route level code-splitting
     // this generates a separate chunk (product.[hash].js) for this route
@@ -87,7 +87,7 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (!store.getters.loggedIn) {
+    if (!store.getters.isAuthenticated) {
       next({
         name: 'SignIn'
       })
@@ -97,7 +97,7 @@ router.beforeEach((to, from, next) => {
   } else if (to.matched.some(record => record.meta.requiresVisitor)) {
     // this route requires auth, check if logged in
     // if not, redirect to login page.
-    if (store.getters.loggedIn) {
+    if (store.getters.isAuthenticated) {
       next({
         name: 'Home'
       })
