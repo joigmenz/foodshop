@@ -23,7 +23,7 @@
             <div class="flex flex-col w-auto">
                 <router-link class="flex justify-end tracking-wide no-underline hover:no-underline text-gray-800 text-sm font-serif uppercase gap-1 pt-2" to="/about">
                     <img src="assets/icons/email.svg" width="20" height="24" />
-                    Contact
+                    Suggestion
                 </router-link>
                 <div class="flex items-center content-end gap-2 uppercase my-2">
                     

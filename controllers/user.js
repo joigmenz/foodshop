@@ -2,6 +2,8 @@ const User = require('../models').user;
 const service = require('../services/services');
 const Order = require('../models').order;
 const OrderProduct = require('../models').OrderProduct;
+const Suggestion = require('../models').Suggestion
+const db = require('../models/index')
 
 module.exports = {
     create(req, res) {
@@ -50,19 +52,31 @@ module.exports = {
             )})
         .catch(error => res.send(error))
     },
-    checkout: async (req, res) => {        
-        const order = await Order.create({ userId: req.userId })       
-        Object.values(req.body.products).forEach( async product => {
+    checkout: async (req, res) => { 
+        let t;
+        try {
+            t = await db.sequelize.transaction();
+            const order = await Order.create({ userId: req.userId }, { transaction:t })       
+            Object.values(req.body.products).forEach( async product => {
             await OrderProduct.create({
-                orderId: order.id,
-                productId: product.id,
-                qty: product.qty
-            })
-            console.log(product.id)
-        });
-        //console.log(products)
-        return res.send({
-            message: "Success."
-        });
+                    orderId: order.id,
+                    productId: product.id,
+                    qty: product.qty,
+                    price: product.price
+                })            
+            });
+            await t.commit();
+            return res.status(200).send({ message: 'Success' });
+        } catch (error) {
+            await t.rollback();
+            return res.status(503).send({ message: 'error' });
+        } 
+    },
+    suggestion: async (req, res) => {        
+        await Suggestion.create({
+            userId: req.userId,
+            message: req.body.message
+        })
+        return res.status(200).send({ message: 'Success' })
     }
 }

@@ -99,8 +99,9 @@ export default new Vuex.Store({
         http.post('/checkout', {
           products
         }).then(response => {
-          console.log(response.data)
-        }).catch(error => {
+          localStorage.removeItem('cart')
+          commit('updateCart', {})
+        }).catch(error => { 
           commit('AUTH_LOGOUT')
           router.push('/sign-in')
           reject(error)
@@ -163,7 +164,19 @@ export default new Vuex.Store({
       localStorage.setItem('cart', JSON.stringify(cart))
       context.commit('updateCart', cart)        
       context.commit('total', cart)   
-    }
+    },
+    sendSuggestion(context, message){      
+      return new Promise((resolve, reject) => {
+        http.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem("access_token")
+        http.post('/suggestion', { message })
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {       
+            reject(error)
+          })
+      })
+    } 
   },
   modules: {
   }

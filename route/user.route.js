@@ -4,7 +4,7 @@ module.exports = function(app) {
     var jwt = require('jwt-simple');
     var config = require('../app/config');
 
-    const Middleware = function(req, res, next) {
+    const Authorization = function(req, res, next) {
         if(!req.headers.authorization) {
             return res.status(403)
                       .send({message: "Tu petición no tiene cabecera de autorización"});
@@ -16,7 +16,8 @@ module.exports = function(app) {
         next();
     }
 
-    app.post('/api/checkout', Middleware, User.checkout)
+    app.post('/api/checkout', Authorization, User.checkout)
+    app.post('/api/suggestion', Authorization, User.suggestion)
     app.get('/api/users', User.list);
     app.post('/api/users', User.create);
     app.post('/api/login', User.login);

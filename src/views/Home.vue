@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <IndexStore />
+      <IndexStore />
     </div>
 </template>
 

@@ -27,17 +27,15 @@ module.exports = (sequelize, DataTypes) => {
     qty: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    price: {
+      type: DataTypes.FLOAT(11,2)
     }
   }, {
     sequelize,
     modelName: 'OrderProduct',
     tableName: 'order_product'
   });
-
-  OrderProduct.associate = function(models) {    
-    //OrderProduct.belongsTo(models.order, { foreignKey: 'order_id' }),
-    //OrderProduct.belongsTo(models.products, { foreignKey: 'product_id' })    
-  }
 
   return OrderProduct;
 };

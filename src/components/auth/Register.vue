@@ -7,10 +7,10 @@
         class="bg-grey-lighter min-h-screen flex flex-col">
         <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
             <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                <a class="flex flex-col items-center tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-xl mb-7 opacity-75" href="#">
-                    <img src="assets/icons/store.svg" width="38" height="38" />
-                    FOODSHOP
-                </a>       
+                <a class="flex items-center justify-center mb-8 tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-2xl gap-1 pt-2" href="/">
+                    <img src="assets/icons/wine.svg" width="36" height="36" />
+                    wineshop.com
+                </a>   
                 <input 
                     id="name"
                     v-model="name"
