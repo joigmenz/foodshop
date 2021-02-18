@@ -46,24 +46,14 @@
                     type="submit"
                     class="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-700 focus:outline-none my-1 font-bold"
                     >
-                    Sign Up
+                    {{ $t('sign-up') }}
                 </button>
-
-                <div class="text-center text-sm text-grey-dark mt-4">
-                    By signing up, you agree to the 
-                    <a class="no-underline font-semibold text-grey-dark" href="#">
-                        Terms of Service
-                    </a> and 
-                    <a class="no-underline font-semibold text-grey-dark" href="#">
-                        Privacy Policy
-                    </a>
-                </div>
             </div>
 
             <div class="text-grey-dark mt-6">
-                Have an account?
-                <router-link class="no-underline font-bold text-blue" to="/sign-in">
-                    Sign In
+                {{ $t('have-an-account') }}
+                <router-link class="no-underline font-bold text-blue" :to="`/${this.$i18n.locale}/sign-in`">
+                    {{ $t('sign-in') }}
                 </router-link>
             </div>
         </div>

@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./src/server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-css": "tailwindcss build ./src/tailwindcss/styles.css -o ./public/css/styles.css"
+    "build-css": "tailwindcss build ./src/tailwindcss/styles.css -o ./public/css/styles.css",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+    "start": "nodemon ./src/server.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -21,6 +22,7 @@
     "sequelize": "^6.5.0",
     "tailwindcss": "^2.0.2",
     "vue": "^2.6.11",
+    "vue-i18n": "^8.17.3",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0",
     "vuex-persistedstate": "^4.0.0-beta.3"
@@ -31,6 +33,7 @@
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "nodemon": "^2.0.7",
+    "vue-cli-plugin-i18n": "~1.0.1",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [

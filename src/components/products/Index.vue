@@ -37,7 +37,7 @@
                     <button 
                         @click="addToCart()"
                         class="bg-red-500 hover:bg-red-600 rounded-sm text-sm text-white font-bold p-2 mt-4">
-                        Add to Cart
+                        {{ $t('add-to-cart') }}
                     </button>
                 </div>                
             </div>

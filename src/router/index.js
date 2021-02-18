@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import i18n from '../i18n'
 import store from '../store'
 import Home from '../views/Home.vue'
 
@@ -8,75 +9,87 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: `/${i18n.locale}`
   },
   {
-    path: '/products/categories/:slug',
-    name: 'CategoryProduct', 
-    // route level code-splitting
-    // this generates a separate chunk (productscategories.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "productscategories" */ '../views/CategoryProduct.vue')
-  },
-  {
-    path: '/about',
-    name: 'About',
-    meta: {
-      requiresAuth: true
+    path: '/:lang',
+    component: {
+      render(c) { return c('router-view') }
     },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  },
-  {
-    path: '/sign-in',
-    name: 'SignIn',
-    meta: {
-      requiresVisitor: true
-    },
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "SignIn" */ '../views/SignIn.vue')
-  },
-  {
-    path: '/sign-up',
-    name: 'SignUp',
-    meta: {
-      requiresVisitor: true
-    },
-    // route level code-splitting
-    // this generates a separate chunk (signup.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue')
-  },
-  {
-    path: '/logout',
-    name: 'Logout',
-    // route level code-splitting
-    // this generates a separate chunk (logout.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "logout" */ '../components/auth/Logout.vue')
-  },
-  {
-    path: '/cart',
-    name: 'Cart',
-    // route level code-splitting
-    // this generates a separate chunk (cart.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue')
-  },
-  {
-    path: '/products/:slug',
-    name: 'product',
-    // route level code-splitting
-    // this generates a separate chunk (product.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue')
+    children: [
+      {
+        path: '/',
+        name: 'Home',
+        component: Home
+      },
+      {
+        path: 'products/categories/:slug',
+        name: 'CategoryProduct', 
+        // route level code-splitting
+        // this generates a separate chunk (productscategories.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "productscategories" */ '../views/CategoryProduct.vue')
+      },
+      {
+        path: 'about',
+        name: 'About',
+        meta: {
+          requiresAuth: true
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+      },
+      {
+        path: 'sign-in',
+        name: 'SignIn',
+        meta: {
+          requiresVisitor: true
+        },
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "SignIn" */ '../views/SignIn.vue')
+      },
+      {
+        path: 'sign-up',
+        name: 'SignUp',
+        meta: {
+          requiresVisitor: true
+        },
+        // route level code-splitting
+        // this generates a separate chunk (signup.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue')
+      },
+      {
+        path: 'logout',
+        name: 'Logout',
+        // route level code-splitting
+        // this generates a separate chunk (logout.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "logout" */ '../components/auth/Logout.vue')
+      },
+      {
+        path: 'cart',
+        name: 'Cart',
+        // route level code-splitting
+        // this generates a separate chunk (cart.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue')
+      },
+      {
+        path: 'products/:slug',
+        name: 'product',
+        // route level code-splitting
+        // this generates a separate chunk (product.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue')
+      }
+    ]
   }
-]
+  ]
 
 const router = new VueRouter({
   mode: "history",

@@ -1,0 +1,33 @@
+{
+  "store": "Store",
+  "red-wine": "Red Wine",
+  "white.wine": "White Wine",
+  "rose-wine": "Rosé Wine",
+  "champagne": "Champagne",
+  "sign-in": "Sign In",
+  "suggestion": "Suggestion",
+  "logout": "Logout",
+
+  "login": "Login",
+  "dont-have-an-account": " Don't have an account?",
+  "sign-up": "Sign up",
+
+  "have-an-account": "Have an account?",
+
+  "shopping-cart": "Shopping Cart",
+  "want-free-shipping": "Want Free Shipping?",
+  "want-free-shipping-massage": "Free shipping on orders over 23.00 Euros.",
+  "order-summary": "Order Summary",
+  "subtotal": "Subtotal",
+  "iva": "IVA",
+  "shipping": "Shipping",
+  "total": "Total",
+  "checkout": "Check Out",
+  "cart-empty": "Your cart is empty",
+  "continue-shopping": "Continue Shopping",
+
+  "add-to-cart": "Add to Cart",
+
+  "enjoy-best-wines": "Enjoy our best wines!",
+  "enjoy-best-wines-massage": "Take advantage of our offers and special prices"
+}

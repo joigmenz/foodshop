@@ -2,7 +2,7 @@
     <div class="max-w-screen-lg flex flex-col m-auto px-6 mt-8">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-3">
             <a class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl " href="#">
-                SHOPPING CART ({{ qtyProducts }})
+                {{ $t('shopping-cart') }} ({{ qtyProducts }})
             </a>
         </div>
         <div class="max-w-screen-lg grid md:grid-cols-5">  
@@ -20,9 +20,9 @@
                     >
                 </ProductShoppingCart> 
                 <div class="flex flex-col items-center text-gray-400 p-4" v-show="!hasProducts">
-                    Your cart is empty    
+                    {{ $t('cart-empty') }}  
                     <a href="/" class="bg-red-600 hover:bg-red-700 rounded-sm text-lg text-white font-bold py-2 px-4 mt-4 w-1/2">
-                        Continue Shopping
+                        {{ $t('continue-shopping') }}
                     </a>
                 </div>     
             </div>

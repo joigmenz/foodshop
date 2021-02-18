@@ -5,7 +5,7 @@
         <img class="object-contain h-48 w-full" :src="picture" />
       </div>
       <div class="flex flex-col">
-        <router-link :to="{ path: '/products/' + slug }"  class="text-center">
+        <router-link :to="{ path: `/${this.$i18n.locale}/products/${slug}` }"  class="text-center">
           {{ name }}
           </router-link>
         <p class="text-sm font-bold uppercase">
@@ -18,7 +18,7 @@
             @click="push"
             class="bg-red-500 px-2 rounded-sm text-xs text-white font-semibold"
           >
-            Add to Cart
+            {{ $t('add-to-cart') }}
             
           </button>
         </div>

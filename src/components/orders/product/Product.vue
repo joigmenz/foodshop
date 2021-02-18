@@ -4,7 +4,7 @@
             <img class="ml-2" :src="picture" style="height: 56px">
             <div class="flex flex-col justify-between ml-2">
                 <div class="flex flex-col mr-5">                    
-                    <router-link :to="{ path: '/products/' + slug }"  class="text-left text-sm w-48 truncate">{{ name }}</router-link> 
+                    <router-link :to="{ path: `/${this.$i18n.locale}/products/${slug}` }"  class="text-left text-sm w-48 truncate">{{ name }}</router-link> 
                     <span class="text-left text-xs font-light text-gray-400 ">{{ category.replace('-', ' ') }}</span> 
                 </div>   
                 <div class="flex justify-between">

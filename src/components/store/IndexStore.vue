@@ -12,14 +12,14 @@
           >
             <img :src="slide.picture" />
             <div class="product">
-              <h1>{{ slide.name }}</h1>
+              <router-link :to="{ path: `/${ $i18n.locale }/products/${slide.slug}` }"  class="text-left text-sm w-48 truncate">{{ slide.name }}</router-link> 
               <p class="price">{{ slide.price.toFixed(2) }}€</p>
             </div>
           </CarouselSlide>
         </Carousel>
         <div class="flex flex-col w-full text-left px-16 font-serif justify-center">
-          <h1 class="text-5xl text-green-700">Enjoy our best wines</h1>
-          <p class="text-2xl">Take advantage of our offers and special prices</p>
+          <h1 class="text-5xl text-green-700">{{ $t('enjoy-best-wines') }}</h1>
+          <p class="text-2xl">{{ $t('enjoy-best-wines-massage') }}</p>
         </div>
       </div>
       <nav id="store" class="w-full z-30 top-0 px-6 py-1">
@@ -30,7 +30,7 @@
             class="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
             href="#"
           >
-            Store
+            {{ $t('store') }}
           </a>
         </div>
       </nav>

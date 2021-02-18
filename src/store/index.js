@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import http from '../http-common'
 import router from '../router/index'
+import i18n from '../i18n'
 
 Vue.use(Vuex)
 
@@ -103,7 +104,7 @@ export default new Vuex.Store({
           commit('updateCart', {})
         }).catch(error => { 
           commit('AUTH_LOGOUT')
-          router.push('/sign-in')
+          router.push(`/${i18n.locale}/sign-in`)
           reject(error)
         })
       });

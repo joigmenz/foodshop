@@ -1,0 +1,33 @@
+{
+    "store": "Tienda",
+    "red-wine": "Vino Tinto",
+    "white.wine": "Vino Blanco",
+    "rose-wine": "Vino Rosado",
+    "champagne": "Champagne",
+    "sign-in": "Iniciar sesión",
+    "suggestion": "Sugerencias",
+    "logout": "Salir",
+
+    "login": "Ingresar",
+    "dont-have-an-account": " No tienes una cuenta?",
+    "sign-up": "Registrarse",
+
+    "have-an-account": "Tienes una cuenta?",
+
+    "shopping-cart": "Tu carrito de Compras",
+    "want-free-shipping": "Quieres envío Gratis?",
+    "want-free-shipping-massage": "Envío gratuito en pedidos superiores a 23.00 Euros",
+    "order-summary": "Resumen del Pedido",
+    "subtotal": "Subtotal",
+    "iva": "IVA",
+    "shipping": "Envío",
+    "total": "Total",
+    "checkout": "Comprar",
+    "cart-empty": "Tu carrito está vacío",
+    "continue-shopping": "Continuar comprando",
+
+    "add-to-cart": "Añadir",
+
+    "enjoy-best-wines": "¡Disfruta de nuestros mejores vinos!",
+    "enjoy-best-wines-massage": "Aprovecha nuestros precios y ofertas especiales "
+}
