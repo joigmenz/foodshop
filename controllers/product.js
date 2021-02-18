@@ -23,6 +23,20 @@ module.exports = {
             }
         })
         .then(products => res.status(200).send(products.rows))
-        .catch(error => res.status(400).send(console.error()))
+        .catch(error => res.status(400).send(error))
+    },
+    lowCost(_, res) {
+        return Product.findAll({
+                limit: 3,
+                order: [
+                    ['price', 'ASC']
+                ]
+            })
+            .then(response => {
+                res.status(200).send(response)
+            })
+            .catch(error => {
+                res.status(400).send(error)
+            })
     }
 }

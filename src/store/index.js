@@ -11,7 +11,7 @@ export default new Vuex.Store({
     status: '',
     token: http.defaults.headers.common.Authorization ? true : false, 
     cart: JSON.parse(localStorage.getItem('cart')) || {},
-    products: [],
+    products: []
   },
   getters: {
     isAuthenticated: state => !!state._token,
@@ -48,7 +48,7 @@ export default new Vuex.Store({
       var amount = Object.values(cart).reduce((amount, product) => amount + (product.price * product.qty ), 0)
       state.total = amount.toFixed(2)
     },
-    setProducts: (state, data) => state.products = data,
+    setProducts: (state, data) => state.products = data
   },
   actions: {
     AUTH_REQUEST: ({ commit, dispatch }, credentials) => {
@@ -176,7 +176,19 @@ export default new Vuex.Store({
             reject(error)
           })
       })
-    } 
+    },
+    fetchProductsLowCost({ commit }){
+      return new Promise((resolve, reject) => {
+        http.get('/e-commerce/low-cost')
+          .then(response => {
+            const { data } = response
+            resolve(data)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
+    }
   },
   modules: {
   }
