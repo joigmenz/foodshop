@@ -10,11 +10,13 @@
             :visibleSlide="visibleSlide"
             :direction="direction"
           >
-            <img :src="slide.picture" />
-            <div class="product">
-              <router-link :to="{ path: `/${ $i18n.locale }/products/${slide.slug}` }"  class="text-left text-sm w-48 truncate">{{ slide.name }}</router-link> 
-              <p class="price">{{ slide.price.toFixed(2) }}€</p>
-            </div>
+            <router-link :to="{ path: `/${ $i18n.locale }/products/${slide.slug}` }">
+              <img :src="slide.picture" />
+              <div class="product">
+                {{ slide.name }}              
+                <p class="price">{{ slide.price.toFixed(2) }}€</p>
+              </div>
+            </router-link> 
           </CarouselSlide>
         </Carousel>
         <div class="flex flex-col w-full text-left px-16 font-serif justify-center">
@@ -97,13 +99,23 @@ export default {
       return this.slides.length;
     },
   },
+  created() {
+    if(!this.sliding) {
+      this.sliding = setInterval(() => {
+        this.next()
+      }, 5000)
+    }   
+  },
+  beforeUnmount() {
+    clearInterval(this.sliding)
+  },
   mounted() {
     const url = "/products";
     this.$store.dispatch("fetchProductData", url);
     this.$store.dispatch("fetchProductsLowCost").then((data) => {
       this.slides = data;
     });
-  },
+  }
 };
 </script>
 

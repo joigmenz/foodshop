@@ -156,10 +156,11 @@ export default new Vuex.Store({
     },
     addToCart(context, product) {
       const cart = JSON.parse(localStorage.getItem('cart')) || {} 
+      console.log(product)
       if(!cart[product.id]){
         product.qty = 1
       }else{
-        product.qty = cart[product.id].qty + 1
+        product.qty = cart[product.id].qty + product.qty
       }
       cart[product.id] = product  
       localStorage.setItem('cart', JSON.stringify(cart))

@@ -52,7 +52,7 @@ export default {
     ],
     data() {
         return {
-            qty: 0
+            qty: 1
         }
     },
     methods: {
@@ -64,7 +64,6 @@ export default {
         },
         addToCart() {
             const { id, picture, name, category, price, qty } = this
-            console.log({ id, picture, name, category, price, qty } )
             this.$store.dispatch('addToCart',
                 { id, picture, name, category, price, qty } 
             )
