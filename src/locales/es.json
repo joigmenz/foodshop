@@ -5,7 +5,8 @@
     "rose-wine": "Vino Rosado",
     "champagne": "Champagne",
     "sign-in": "Iniciar sesión",
-    "suggestion": "Sugerencias",
+    "suggestion": "Contacto",
+    "contact-us": "Contactanos",
     "logout": "Salir",
 
     "login": "Ingresar",
@@ -29,5 +30,9 @@
     "add-to-cart": "Añadir",
 
     "enjoy-best-wines": "¡Disfruta de nuestros mejores vinos!",
-    "enjoy-best-wines-massage": "Aprovecha nuestros precios y ofertas especiales "
+    "enjoy-best-wines-massage": "Aprovecha nuestros precios y ofertas especiales ",
+
+    "how-cand-we-help": "¿Cómo podemos ayudar?",
+    "how-cand-we-help-request": "Estamos aquí para ayudar y responder cualquier pregunta que pueda tener. Esperamos con interés escuchar de usted. ",
+    "submit": "Enviar"
 }

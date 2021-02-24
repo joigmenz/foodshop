@@ -1,7 +1,7 @@
 <template>
     <div class="md:col-span-2 flex flex-col text-left px-8">
                 <div class="bg-gray-200 rounded p-4 mb-2">
-                    <h1 class="uppercase text-base font-bold text-green-700">{{ $t('ant-free-shipping') }}</h1>
+                    <h1 class="uppercase text-base font-bold text-green-700">{{ $t('want-free-shipping') }}</h1>
                     <p>{{ $t('want-free-shipping-massage') }}</p>
                 </div>
                 <h1 class="text-lg font-bold px-4 uppercase">{{ $t('order-summary') }}</h1>

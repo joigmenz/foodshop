@@ -5,7 +5,8 @@
   "rose-wine": "Rosé Wine",
   "champagne": "Champagne",
   "sign-in": "Sign In",
-  "suggestion": "Suggestion",
+  "suggestion": "Contact",
+  "contact-us": "Contact Us",
   "logout": "Logout",
 
   "login": "Login",
@@ -29,5 +30,9 @@
   "add-to-cart": "Add to Cart",
 
   "enjoy-best-wines": "Enjoy our best wines!",
-  "enjoy-best-wines-massage": "Take advantage of our offers and special prices"
+  "enjoy-best-wines-massage": "Take advantage of our offers and special prices",
+
+  "how-cand-we-help": "How Can We Help?",
+  "how-cand-we-help-request": "We're here to help and answer any question you might have. We look forward to hearing from you.",
+  "submit": "Submit"
 }
